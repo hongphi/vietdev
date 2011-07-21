@@ -113,6 +113,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'registration',
+    'django_authopenid',
     'qna',
 )
 

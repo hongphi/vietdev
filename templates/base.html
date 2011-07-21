@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>{% block title %}{{ block.super }} - vietdev.com{% endblock %}</title>
+
+	{% block desc %}{% endblock %}
+	<link href="{{ STATIC_URL }}favicon.ico" rel="shortcut icon"/>
+
+	<link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/reset.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/text.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/960.css" />
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" >
+
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/screen.js"></script>
+	<!--[if IE]>
+		<script type="text/javascript" src="http://mooncdn.com/html5.js"></script>
+	<![endif]-->
+    <script type="text/javascript">
+		var STATIC_URL = "{{ STATIC_URL }}";
+	</script>
+    {% block extra_static %}{% endblock %}
+</head>
+<body>
+
+<nav class="main_nav green right">
+    <ul>
+        {% if request.user.is_authenticated %}
+            <li><a href="" class="username"><strong>{{ request.user.username }}</strong></a></li>
+            <li><a href="{% url auth_password_change %}">Password</a></li>
+            <li><a href="{% url user_signout %}?next={{ request.path }}">Logout</a></li>
+        {% else %}
+            <li><a href="{% url user_signin %}">Login/Register</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+{% block main %}{% endblock %}
+</body>
+</html>

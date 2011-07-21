@@ -12,7 +12,7 @@ QnA website
 * PIL
 * haystacksearch (django-haystack)
 * whoosh
-
-## Installation
+* django-authopenid: `https://bitbucket.org/benoitc/django-authopenid/`
+* django-registration: `https://bitbucket.org/ubernostrum/django-registration/`
 
 

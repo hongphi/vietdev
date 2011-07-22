@@ -6,9 +6,7 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.http import HttpResponse
 from django.template.defaultfilters import slugify
 from django.views.decorators.csrf import csrf_protect
-from taggit.models import Tag
 
-import httplib2
 import json
 
 
@@ -18,4 +16,4 @@ def home(request):
     """
     return render_to_response('home.html',
         {},
-        context_instance=RequestContext(request))
+        context_instance = RequestContext(request))

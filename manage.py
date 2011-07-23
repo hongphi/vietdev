@@ -9,6 +9,7 @@ except ImportError:
     sys.exit(1)
 
 import settings
+import math
 
 if __name__ == "__main__":
     execute_manager(settings)

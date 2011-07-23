@@ -15,9 +15,3 @@ QnA website
 * django-authopenid: `https://bitbucket.org/benoitc/django-authopenid/`
 * django-registration: `https://bitbucket.org/ubernostrum/django-registration/`
 
-test conflict
-ssdsdsds
-ds
-ds
-s
-sd

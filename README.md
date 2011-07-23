@@ -9,7 +9,7 @@ QnA website
 
 ## Dependencies
 * django-taggit
-* PIL( What is it ?)
+* PIL
 * haystacksearch (django-haystack)
 * whoosh
 * django-authopenid: `https://bitbucket.org/benoitc/django-authopenid/`

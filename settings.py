@@ -117,6 +117,7 @@ INSTALLED_APPS = (
     'django_authopenid',
     'qna',
     'qna.templatetags',
+    'profile',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

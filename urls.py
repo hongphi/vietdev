@@ -14,8 +14,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
-    url(r'^', include('qna.urls')),
-
-    url(r'^admin/', include(admin.site.urls)),
-    (r'^account/', include(authopenid_urlpatterns)),
+    url(r'^$', include('qna.urls')),
+    url(r'^profile/$', include('profile.urls')),
+    url(r'^admin/$', include(admin.site.urls)),
+    (r'^account/$', include(authopenid_urlpatterns)),
 )

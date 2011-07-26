@@ -3,6 +3,10 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+GENDER_CHOICES = (
+                    ('M', 'Male'),
+                    ('F', 'Female'),
+                 )
 class Profile(models.Model):
     '''
     The detail information of user
@@ -12,7 +16,7 @@ class Profile(models.Model):
     birthday     = models.DateField()
     home_address = models.CharField(max_length = 200, null = True, blank = True)
     work_address = models.CharField(max_length = 200, null = True, blank = True)
-    gender       = models.CharField(max_length = 2)
+    gender       = models.CharField(max_length = 2, choices = GENDER_CHOICES)
     education    = models.TextField(null = True, blank = True)
     avatar       = models.ImageField(upload_to = 'image', null = True, blank = True)
     about_user   = models.TextField(null = True, blank = True)

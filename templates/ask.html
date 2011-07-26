@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <h1>Have any question?</h1>
+    <form action="/ask/" method="get">
+        <input type="text" name="t" value="{{ title }}">
+        <input type="text" name="q" value="{{ question }}">
+        <input type="submit" value="Ask">
+    </form>
+{% endblock %}

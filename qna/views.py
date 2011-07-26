@@ -10,6 +10,8 @@ from django.views.decorators.csrf import csrf_protect
 import json
 from qna.models import Question
 import datetime
+from qna.forms import QuestionForm
+
 
 def home(request):
     """
@@ -19,10 +21,23 @@ def home(request):
         {},
         context_instance = RequestContext(request))
 
-def ask(request):
-    if 'q' in request.GET and 't' in request.GET:
-        q = request.GET['q']
-        t = request.GET['t']
-        if q and t:
-            question = Question(title = t, content=q)
-    return render_to_response('ask.html',{'title' : "",'question' : ""})
+@login_required
+@csrf_protect
+def ask(request):    
+    if request.method == "POST":
+        q_form = QuestionForm(request.POST)
+        if q_form.is_valid():
+            title = request.POST['title']
+            content = request.POST['content']
+            tags = request.POST['tags']
+            question = Question(title = title, content = content, tags = tags, bonus = 0)
+            question.author = request.user
+            question.save()
+            q_form = QuestionForm()
+    else:
+        q_form = QuestionForm()
+            
+    return render_to_response('ask.html',{"form" : q_form}, context_instance = RequestContext(request))
+
+
+

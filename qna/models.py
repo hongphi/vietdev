@@ -7,9 +7,9 @@ class Question(models.Model):
     date        = models.DateField(auto_now = True)                         # Day ask
     content     = models.TextField(max_length = 1000)                       # Content of question
     author      = models.ForeignKey(User, related_name = "q_author")        # Who is ask this question
-    likes       = models.ManyToManyField(User, related_name = "q_likes")    # User like this question
-    tags        = models.CharField(max_length = 100)                        # This question can be in tags
-    bonus       = models.IntegerField()                                     # Bonus points of this question
+    likes       = models.ManyToManyField(User, related_name = "q_likes", blank = True)    # User like this question
+    tags        = models.CharField(max_length = 100, blank = True)                        # This question can be in tags
+    bonus       = models.IntegerField(blank = True)                                     # Bonus points of this question
 
     def __unicode__(self):
         return self.title
@@ -21,7 +21,7 @@ class Answer(models.Model):
     date        = models.DateField(auto_now = True)                         # Answer day
     content     = models.TextField(max_length = 1000)                       # Content of answer
     author      = models.ForeignKey(User, related_name = "a_author")        # Who is author of this answer
-    likes       = models.ManyToManyField(User, related_name = "a_likes")    # Users like this answer
+    likes       = models.ManyToManyField(User, related_name = "a_likes", blank = True)    # Users like this answer
     question    = models.ForeignKey(Question)                               # Question of this answer
 
     def __unicode__(self):

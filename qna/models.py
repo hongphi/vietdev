@@ -25,4 +25,4 @@ class Answer(models.Model):
     question    = models.ForeignKey(Question)                               # Question of this answer
 
     def __unicode__(self):
-        return self.author
+        return self.author.username

@@ -2,9 +2,9 @@
 
 {% block main %}
 	<a href="/qna/ask/">Create question</a><br>
-    {{ question.author.username }}       {{ question.title }}<br>
+    {{ question.author.username }}  {{ question.date }} <br>
+    {{ question.title }}<br>
     {{ question.content }}<br>
-    {{ question.date }}<br>
     <br>
     {% for a in answers %}
     	{{ a.author.username }}  {{ a.date }} <br>

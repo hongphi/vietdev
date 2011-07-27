@@ -35,7 +35,7 @@ class Profile(models.Model):
     work_phone   = models.CharField(max_length = 15, blank = True)
     mobile_phone = models.CharField(max_length = 15, blank = True)
     interests    = models.TextField(blank = True)
-    joined_date  = models.DateField(auto_now = True)
+    joined_date  = models.DateTimeField(auto_now = True)
     
     def get_experience(self):
         return Experience.objects.filter(user = self)
@@ -51,6 +51,7 @@ class Experience(models.Model):
     '''
     id            = models.AutoField(primary_key = True)
     user          = models.ForeignKey(User, unique = False)
+    position      = models.CharField(max_length = 50)
     company_name  = models.CharField(max_length = 100)
     technical_use = models.CharField(max_length = 100)
     work_time     = models.IntegerField(choices = WORK_TIME_CHOICES)
@@ -63,7 +64,7 @@ class Experience(models.Model):
 
 class Activity(models.Model):
     user = models.ForeignKey(User, unique = True)
-    level = models.IntegerField()
-    special_point = models.IntegerField()    
+    level = models.IntegerField(default = 0)
+    special_point = models.IntegerField(default = 0)    
 
 

@@ -2,6 +2,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect
+from profile.models import Profile
 
 
 
@@ -11,6 +12,10 @@ def profile_home(request):
     View profile of User.
     @param request:
     '''
+    try:
+        profile = Profile.objects.get_or_create()
+    except Exception as e:
+        pass
     return HttpResponse("Hello world")
 
 

@@ -23,7 +23,7 @@ def home(request):
 
 @login_required
 @csrf_protect
-def ask(request):    
+def ask(request):
     if request.method == "POST":
         q_form = QuestionForm(request.POST)
         if q_form.is_valid():
@@ -37,7 +37,15 @@ def ask(request):
     else:
         q_form = QuestionForm()
             
-    return render_to_response('ask.html',{"form" : q_form}, context_instance = RequestContext(request))
+    return render_to_response('qna/ask.html',{"form" : q_form}, context_instance = RequestContext(request))
 
+def list(request):
+    questions = Question.objects.all()
+    return render_to_response('qna/list.html',
+                              {'questions': questions},
+                              context_instance = RequestContext(request))
 
-
+@login_required
+@csrf_protect
+def answer(request):
+    return render_to_response('qna/list.html',{},context_instance = RequestContext(request))

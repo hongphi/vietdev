@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block main %}
+    {% for q in questions %}
+        <h3>{{ q.title }}</h3>
+        <p>{{ q.content }}</p>
+        <a href="/ask/list/">Answer</a>
+    {% endfor %}
+{% endblock %}

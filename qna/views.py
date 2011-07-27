@@ -3,14 +3,14 @@ from django.contrib.auth.models import User
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template.defaultfilters import slugify
 from django.views.decorators.csrf import csrf_protect
 
 import json
-from qna.models import Question
+from qna.models import Question, Answer
 import datetime
-from qna.forms import QuestionForm
+from qna.forms import QuestionForm, AnswerForm
 
 
 def home(request):
@@ -37,15 +37,42 @@ def ask(request):
     else:
         q_form = QuestionForm()
             
-    return render_to_response('qna/ask.html',{"form" : q_form}, context_instance = RequestContext(request))
+    return render_to_response('qna/ask.html',
+                              {"form": q_form}, 
+                              context_instance = RequestContext(request))
 
-def list(request):
+def list_question(request):
     questions = Question.objects.all()
     return render_to_response('qna/list.html',
                               {'questions': questions},
                               context_instance = RequestContext(request))
 
-@login_required
+def show_question(request, id):
+    try:
+        question = Question.objects.get(pk = id)
+        answers = question.get_answers()
+        form = AnswerForm()
+        return render_to_response('qna/question.html',
+                                  {"question" : question,
+                                   "answers": answers,
+                                   "form" : form },
+                                  context_instance = RequestContext(request))
+    except:
+        return Http404()
+
+
 @csrf_protect
-def answer(request):
-    return render_to_response('qna/list.html',{},context_instance = RequestContext(request))
+@login_required
+def answer(request, id_question):
+    if request.method == "POST":
+        a_form = AnswerForm(request.POST)
+        if a_form.is_valid():
+            question = Question.objects.get(pk = id_question)
+            content = request.POST["content"]
+            ans = Answer(content = content)
+            ans.author = request.user
+            ans.question = question
+            ans.save()
+            
+    return HttpResponseRedirect('/qna/question/%d/' % int(id_question))
+    

@@ -1,9 +1,17 @@
 {% extends "base.html" %}
 
 {% block main %}
-    <h1>Have any question?</h1>
-    <form action="/ask/" method="post">{% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Ask">
+    {{ question.author.username }}       {{ question.title }}<br>
+    {{ question.content }}<br>
+    {{ question.date }}<br>
+    <br>
+    {% for a in answers %}
+    	{{ a.author.username }}  {{ a.date }} <br>
+    	{{ a.content }}
+    	<hr>
+    {% endfor %}
+    <form method="post" action="/qna/answer/{{ question.id }}/"> {% csrf_token %}
+    	{{ form.as_p }}
+    	<input type="submit" value="Submit">
     </form>
 {% endblock %}

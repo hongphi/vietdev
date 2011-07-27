@@ -1,5 +1,5 @@
 from django import forms
-from qna.models import Question
+from qna.models import Question, Answer
 
 
 class QuestionForm(forms.ModelForm):
@@ -11,3 +11,13 @@ class QuestionForm(forms.ModelForm):
             "author",
             "likes",
             "bonus"]
+        
+class AnswerForm(forms.ModelForm):
+    
+    class Meta:
+        model = Answer
+        exclude = [
+            "date",
+            "author",
+            "likes",
+            "question"]

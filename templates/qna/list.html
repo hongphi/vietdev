@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
 {% block main %}
+	<a href="/qna/ask/">Create question</a>
     {% for q in questions %}
         <h3>{{ q.title }}</h3>
         <p>{{ q.content }}</p>
-        <a href="/ask/list/">Answer</a>
+        <a href="/qna/question/{{ q.id }}/">More</a>
     {% endfor %}
 {% endblock %}

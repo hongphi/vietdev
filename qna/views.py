@@ -33,7 +33,7 @@ def ask(request):
             question = Question(title = title, content = content, tags = tags, bonus = 0)
             question.author = request.user
             question.save()
-            q_form = QuestionForm()
+            return HttpResponseRedirect('/qna/question/%d/' % question.id)
     else:
         q_form = QuestionForm()
             

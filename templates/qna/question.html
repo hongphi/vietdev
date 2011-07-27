@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <h1>Have any question?</h1>
+    <form action="/ask/" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Ask">
+    </form>
+{% endblock %}

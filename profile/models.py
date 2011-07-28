@@ -29,7 +29,7 @@ class Profile(models.Model):
     work_address = models.CharField(max_length = 100, blank = True)
     gender       = models.CharField(max_length = 2, choices = GENDER_CHOICES)
     education    = models.TextField(blank = True)
-    avatar       = models.ImageField(upload_to = 'image', blank = True)
+    avatar       = models.ImageField(upload_to = 'images', blank = True)
     about_user   = models.TextField(blank = True)
     home_phone   = models.CharField(max_length = 15, blank = True)
     work_phone   = models.CharField(max_length = 15, blank = True)

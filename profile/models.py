@@ -43,6 +43,12 @@ class Profile(models.Model):
     def __unicode__(self):
         return self.user.username
     
+    def get_full_name(self):
+        '''
+        Get full name of user
+        '''            
+        return '%s %s %s'.upper() % (self.first_name, self.middle_name, self.last_name)
+    
 
     
 class Experience(models.Model):

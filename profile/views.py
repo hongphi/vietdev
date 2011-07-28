@@ -1,8 +1,10 @@
 # Create your views here.
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.views.decorators.csrf import csrf_protect
 from profile.models import Profile
+from django.shortcuts import render_to_response
+from django.template.context import RequestContext
 
 
 
@@ -13,10 +15,12 @@ def profile_home(request):
     @param request:
     '''
     try:
-        profile = Profile.objects.get_or_create()
+        profile = Profile.objects.get_or_create(user = request.user)
     except Exception as e:
-        pass
-    return HttpResponse("Hello world")
+        raise Http404()
+    
+    return render_to_response('profile/profile.html', {'profile' : profile},
+                              context_instance = RequestContext(request))
 
 
 @login_required

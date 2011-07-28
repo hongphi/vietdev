@@ -58,7 +58,7 @@ def show_question(request, id):
                                    "form" : form },
                                   context_instance = RequestContext(request))
     except:
-        return Http404()
+        raise Http404()
 
 
 @csrf_protect

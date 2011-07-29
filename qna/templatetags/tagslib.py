@@ -17,7 +17,7 @@ def count_answer(obj):
     
 @register.filter
 def pluralize(val):
-    if val < 2:
+    if val < 2 or not isinstance(val, int):
         return ""
     else:
         return "s"

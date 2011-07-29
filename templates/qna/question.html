@@ -4,11 +4,11 @@
 	<a href="/qna/ask/">Create question</a><br>
     {{ question.author.username }}  {{ question.date }} <br>
     {{ question.title }}<br>
-    {{ question.content }}<br>
+    {{ question.content|linebreaksbr }}<br>
     <br>
     {% for a in answers %}
     	{{ a.author.username }}  {{ a.date }} <br>
-    	{{ a.content }}
+    	{{ a.content|linebreaksbr }}
     	<hr>
     {% endfor %}
     <form method="post" action="/qna/answer/{{ question.id }}/"> {% csrf_token %}

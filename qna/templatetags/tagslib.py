@@ -13,5 +13,12 @@ def count_answer(obj):
         return Answer.objects.filter(question = obj).count()
     else:    
         raise TypeError("Object input must be a instance of Question!")
- 
+    
+    
+@register.filter
+def pluralize(val):
+    if val < 2:
+        return ""
+    else:
+        return "s"
 

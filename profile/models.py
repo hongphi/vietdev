@@ -47,7 +47,7 @@ class Profile(models.Model):
         '''
         Get full name of user
         '''            
-        return '%s %s %s'.upper() % (self.first_name, self.middle_name, self.last_name)
+        return '%s %s %s' % (self.first_name, self.middle_name, self.last_name)
     
 
     

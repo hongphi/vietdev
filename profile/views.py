@@ -15,7 +15,7 @@ def profile_home(request):
     @param request:
     '''
     try:
-        profile = Profile.objects.get_or_create(user = request.user)
+        profile, created = Profile.objects.get_or_create(user = request.user)
     except Exception as e:
         raise Http404()
     

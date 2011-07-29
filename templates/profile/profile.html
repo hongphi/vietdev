@@ -1,10 +1,30 @@
 {% extends "base.html" %}
 
-{% block main %}
-	{{ profile.count }}
-	<dl class="profile">
-	  <dt> First definition</dt>  <dd>  First explanation</dd>
-	  <dt> Second definition</dt> <dd> Second explanation</dd>
-	</dl>
+{% load tagslib %}
 
+{% block extra_static %}
+<link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/profile.css" />
+{% endblock %}
+
+{% block main %}
+	<div class='view'>
+		<dl class="profile">
+		  <dt><img alt="{{ profile.user.username }}" height="80" src="{{ STATIC_URL }}{{ profile.avatar }}"></dt>  
+	  	  <dd> <h3 style="margin-top: 30px;"> {{ profile|fullname }}</h3></dd>
+		  <dt>Website</dt> 
+		  <dd>{{ profile.website }}</dd>
+		  <dt>Birthday</dt>  
+		  <dd>{{ profile.birthday }}</dd>
+		  <dt>Gender</dt> 
+		  <dd>{{ profile.gender }}</dd>
+		  <dt>Education</dt> 
+		  <dd>{{ profile.education }}</dd>
+		  <dt>Phone</dt> 
+		  <dd>{{ profile.mobile_phone }}</dd>
+		  <dt>About me</dt>  
+		  <dd>{{ profile.about_user }}</dd>
+		  <dt>Interests</dt>  
+		  <dd>{{ profile.interests }}</dd>
+		</dl>
+	</div>
 {% endblock %}

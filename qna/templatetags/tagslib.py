@@ -1,5 +1,6 @@
 from django import template
 from qna.models import Question, Answer
+from profile.models import Profile
 
 register = template.Library()
 
@@ -21,4 +22,11 @@ def pluralize(val):
         return ""
     else:
         return "s"
+
+@register.filter   
+def fullname(obj):
+    if isinstance(obj, Profile):
+        return obj.get_full_name()
+    else:
+        return ""
 

@@ -42,7 +42,7 @@ def ask(request):
                               context_instance = RequestContext(request))
 
 def list_question(request):
-    questions = Question.objects.all()
+    questions = Question.objects.all().order_by('-date')
     return render_to_response('qna/list.html',
                               {'questions': questions},
                               context_instance = RequestContext(request))

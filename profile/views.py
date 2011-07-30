@@ -38,12 +38,39 @@ def profile_update(request):
     if request.method == "POST":
         profile_form = ProfileForm(request.POST)
         if profile_form.is_valid():
-            title = request.POST['title']
-            content = request.POST['content']
-            tags = request.POST['tags']
-            question = Profile(title = title, content = content, tags = tags, bonus = 0)
-            question.author = request.user
-            question.save()
+            first_name   = request.POST['first_name'] 
+            middle_name  = request.POST['middle_name']
+            last_name    = request.POST['last_name']
+            website      = request.POST['website']
+            birthday     = request.POST['birthday']
+            home_address = request.POST['home_address']
+            work_address = request.POST['work_address']
+            gender       = request.POST['gender']
+            education    = request.POST['education']
+            avatar       = request.POST['avatar']
+            about_user   = request.POST['about_user']
+            home_phone   = request.POST['home_phone']
+            work_phone   = request.POST['work_phone']
+            mobile_phone = request.POST['mobile_phone']
+            interests    = request.POST['interests']
+            profile = Profile.objects.get(user = request.user)
+            profile.first_name   = first_name   
+            profile.middle_name  = middle_name 
+            profile.last_name    = last_name   
+            profile.website      = website     
+            profile.birthday     = birthday    
+            profile.home_address = home_address
+            profile.work_address = work_address
+            profile.gender       = gender      
+            profile.education    = education   
+            profile.avatar       = avatar      
+            profile.about_user   = about_user  
+            profile.home_phone   = home_phone  
+            profile.work_phone   = work_phone  
+            profile.mobile_phone = mobile_phone
+            profile.interests    = interests
+            profile.save()    
+                                 
     else:
         profile = Profile.objects.get(user = request.user)
         profile_form = ProfileForm(instance = profile)

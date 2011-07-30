@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 # Create your models here.
 
@@ -50,7 +51,6 @@ class Profile(models.Model):
         '''            
         return '%s %s %s' % (self.first_name, self.middle_name, self.last_name)
     
-
     
 class Experience(models.Model):
     '''
@@ -75,3 +75,9 @@ class Activity(models.Model):
     special_point = models.IntegerField(default = 0)
 
 
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+        Activity.objects.create(user = instance)
+
+post_save.connect(create_user_profile, sender=User)

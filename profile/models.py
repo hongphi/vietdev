@@ -15,6 +15,7 @@ WORK_TIME_CHOICES = (
                      (4, '3 - 4 years'),
                      (5, 'over 5 years'),
                     )
+
 class Profile(models.Model):
     '''
     The detail information of user
@@ -23,11 +24,11 @@ class Profile(models.Model):
     first_name   = models.CharField(max_length = 15, blank = True)
     middle_name  = models.CharField(max_length = 15, blank = True)
     last_name    = models.CharField(max_length = 15, blank = True)    
-    website      = models.URLField(max_length = 50, blank = True)
-    birthday     = models.DateField()
+    website      = models.URLField(max_length = 50, blank = True, verify_exists = False)
+    birthday     = models.DateField(null = True)
     home_address = models.CharField(max_length = 100, blank = True)
     work_address = models.CharField(max_length = 100, blank = True)
-    gender       = models.CharField(max_length = 2, choices = GENDER_CHOICES)
+    gender       = models.CharField(max_length = 2, choices = GENDER_CHOICES, blank = True)
     education    = models.TextField(blank = True)
     avatar       = models.ImageField(upload_to = 'images', blank = True)
     about_user   = models.TextField(blank = True)
@@ -69,8 +70,8 @@ class Experience(models.Model):
     
 
 class Activity(models.Model):
-    user = models.ForeignKey(User, unique = True)
-    level = models.IntegerField(default = 0)
-    special_point = models.IntegerField(default = 0)    
+    user          = models.ForeignKey(User, unique = True)
+    level         = models.IntegerField(default = 0)
+    special_point = models.IntegerField(default = 0)
 
 

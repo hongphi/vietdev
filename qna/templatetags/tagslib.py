@@ -33,3 +33,9 @@ def fullname(obj):
     else:
         return ""
 
+@register.filter
+def count_like(obj):
+    if isinstance(obj, Question) or isinstance(obj, Answer):
+        return obj.likes.count()
+    else:
+        raise TypeError("Object input must be a instance of Question or Answer!")

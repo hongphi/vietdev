@@ -6,15 +6,9 @@
 	<a href="/qna/ask/">Create question</a>
     <br>
     {% for q in questions %}
-        <a href="/qna/question/{{ q.id }}/" class="question_title">{{ q.title }}</a>
-        <div class="question_info">
-            <span class="day">{{ q.date }}</span>
-            <span>by </span>
-            <a href="#">{{ q.author.username }}</a>
-        </div>
         <div class="status like">
             <div class="number">
-                0
+                {{ q|count_like }}
             </div>
             <div>
                  like
@@ -28,6 +22,14 @@
                  answer{{ q|count_answer|pluralize }}
             </div>
         </div>
+        <div class="question_info">
+            <a href="/qna/question/{{ q.id }}/" class="question_title">{{ q.title }}</a><br>
+            <span class="day">{{ q.date }}</span>
+            <span>by </span>
+            <a href="#">{{ q.author.username }}</a>
+            <span class="like"><a href="/qna/like_question/{{ q.id }}">Like</a></span>
+        </div>
+
         <hr>
     {% endfor %}
 {% endblock %}

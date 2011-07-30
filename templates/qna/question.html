@@ -1,18 +1,38 @@
 {% extends "base.html" %}
 
+{% load tagslib %}
+
 {% block main %}
-	<a href="/qna/ask/">Create question</a><br>
-    {{ question.author.username }}  {{ question.date }} <br>
-    {{ question.title }}<br>
-    {{ question.content|linebreaksbr }}<br>
+	<a href="/qna/ask/">Create question</a><br><br>
+    <h1 class="question_title">{{ question.title }}</h1>
+    <hr>
+    <div class="content">
+        <p>{{ question.content|linebreaksbr }}</p>
+        <div class="question_info">
+            <span class="day">{{ question.date }}</span>
+            <span>by </span>
+            <a href="#">{{ question.author.username }}</a>
+            <span class="like"><a href="/qna/like_question/{{ question.id }}">Like</a></span>
+        </div>
+    </div>
     <br>
+    <h2 class="answer_title">{{ question|count_answer }} Answer{{ question|count_answer|pluralize }}</h2>
+    <hr>
     {% for a in answers %}
-    	{{ a.author.username }}  {{ a.date }} <br>
-    	{{ a.content|linebreaksbr }}
+        <div class="content">
+            <p>{{ a.content|linebreaksbr }}</p>
+            <div class="question_info">
+                <span class="day">{{ a.date }}</span>
+                <span>by </span>
+                <a href="#">{{ a.author.username }}</a>
+                <span class="like"><a href="/qna/like_answer/{{ a.id }}">Like</a></span>
+            </div>
+        </div>
     	<hr>
     {% endfor %}
+    <h2 class="answer_title"> Your Answer</h2>
     <form method="post" action="/qna/answer/{{ question.id }}/"> {% csrf_token %}
-    	{{ form.as_p }}
+    	<textarea rows="10" cols="40" name="content"></textarea><br>
     	<input type="submit" value="Submit">
     </form>
 {% endblock %}

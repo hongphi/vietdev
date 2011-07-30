@@ -7,6 +7,6 @@ urlpatterns = patterns('qna.views',
     url(r'^ask/$','ask'),
     url(r'^question/(?P<id>\d+)/$','show_question'),
     url(r'^answer/(?P<id_question>\d+)/$','answer'),
-    url(r'like_answer/(?P<id>\d+)/$','like_answer'),
-    url(r'like_question/(?P<id>\d+)/$','like_question'),
+    url(r'like/(?P<type>\w+)/(?P<id>\d+)/$','like'),
+    url(r'unlike/(?P<type>\w+)/(?P<id>\d+)/$','unlike'),
 )

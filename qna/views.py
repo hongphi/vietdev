@@ -44,7 +44,8 @@ def ask(request):
 def list_question(request):
     questions = Question.objects.all().order_by('-date')
     return render_to_response('qna/list.html',
-                              {'questions': questions},
+                              {'questions': questions,
+                               'user': request.user},
                               context_instance = RequestContext(request))
 
 def show_question(request, id):
@@ -78,16 +79,26 @@ def answer(request, id_question):
 
 @csrf_protect
 @login_required
-def like_question(request, id):
-    q = Question.objects.get(pk = id)
-    q.likes.add(request.user)
-
-    return HttpResponseRedirect('/qna/')
+def like(request, type, id):
+    if type == "question":
+        q = Question.objects.get(pk = id)
+        q.likes.add(request.user)
+        return HttpResponseRedirect('/qna/')
+    else:
+        if type == "answer":
+            a = Answer.objects.get(pk = id)
+            a.likes.add(request.user)
+            return HttpResponseRedirect('/qna/question/%d/' % int(a.question_id))
 
 @csrf_protect
 @login_required
-def like_answer(request, id):
-    a = Answer.objects.get(pk = id)
-    a.likes.add(request.user)
-
-    return HttpResponseRedirect('/qna/question/%d/' % int(a.question_id))
+def unlike(request, type, id):
+    if type == "question":
+        q = Question.objects.get(pk = id)
+        q.likes.remove(request.user)
+        return HttpResponseRedirect('/qna/')
+    else:
+        if type == "answer":
+            a = Answer.objects.get(pk = id)
+            a.likes.remove(request.user)
+            return HttpResponseRedirect('/qna/question/%d/' % int(a.question_id))

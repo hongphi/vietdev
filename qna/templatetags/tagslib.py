@@ -5,8 +5,11 @@ from profile.models import Profile
 register = template.Library()
 
 @register.filter
-def test(value, agr):
-    return value + agr
+def no_answer(val):
+    if val < 1 or not isinstance(val, int):
+        return "no_answer"
+    else:
+        return "answers"
 
 @register.filter
 def count_answer(obj):

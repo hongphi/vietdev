@@ -4,10 +4,30 @@
 
 {% block main %}
 	<a href="/qna/ask/">Create question</a>
+    <br>
     {% for q in questions %}
-        <h3>{{ q.title }}</h3>
-        <p>{{ q.content }}</p>
-        <p> {{ q|count_answer }} answer{{ q|count_answer|pluralize }} </p>
-        <a href="/qna/question/{{ q.id }}/">More</a>
+        <a href="/qna/question/{{ q.id }}/" class="question_title">{{ q.title }}</a>
+        <div class="question_info">
+            <span class="day">{{ q.date }}</span>
+            <span>by </span>
+            <a href="#">{{ q.author.username }}</a>
+        </div>
+        <div class="status like">
+            <div class="number">
+                0
+            </div>
+            <div>
+                 like
+            </div>
+        </div>
+        <div class="status {{ q|count_answer|no_answer }}">
+            <div class="number">
+                {{ q|count_answer }}
+            </div>
+            <div>
+                 answer{{ q|count_answer|pluralize }}
+            </div>
+        </div>
+        <hr>
     {% endfor %}
 {% endblock %}

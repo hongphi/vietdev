@@ -75,4 +75,19 @@ def answer(request, id_question):
             ans.save()
             
     return HttpResponseRedirect('/qna/question/%d/' % int(id_question))
-    
+
+@csrf_protect
+@login_required
+def like_question(request, id):
+    q = Question.objects.get(pk = id)
+    q.likes.add(request.user)
+
+    return HttpResponseRedirect('/qna/')
+
+@csrf_protect
+@login_required
+def like_answer(request, id):
+    a = Answer.objects.get(pk = id)
+    a.likes.add(request.user)
+
+    return HttpResponseRedirect('/qna/question/%d/' % int(a.question_id))

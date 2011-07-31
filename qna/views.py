@@ -77,28 +77,25 @@ def answer(request, id_question):
             
     return HttpResponseRedirect('/qna/question/%d/' % int(id_question))
 
-@csrf_protect
+
 @login_required
 def like(request, type, id):
     if type == "question":
         q = Question.objects.get(pk = id)
         q.likes.add(request.user)
-        return HttpResponseRedirect('/qna/')
-    else:
-        if type == "answer":
-            a = Answer.objects.get(pk = id)
-            a.likes.add(request.user)
-            return HttpResponseRedirect('/qna/question/%d/' % int(a.question_id))
+        return HttpResponse(q.likes.count())
+    elif type == "answer":
+        a = Answer.objects.get(pk = id)
+        a.likes.add(request.user)
+        return HttpResponse(a.likes.count())
 
-@csrf_protect
 @login_required
 def unlike(request, type, id):
     if type == "question":
         q = Question.objects.get(pk = id)
         q.likes.remove(request.user)
-        return HttpResponseRedirect('/qna/')
-    else:
-        if type == "answer":
-            a = Answer.objects.get(pk = id)
-            a.likes.remove(request.user)
-            return HttpResponseRedirect('/qna/question/%d/' % int(a.question_id))
+        return HttpResponse(q.likes.count())
+    elif type == "answer":
+        a = Answer.objects.get(pk = id)
+        a.likes.remove(request.user)
+        return HttpResponse(a.likes.count())

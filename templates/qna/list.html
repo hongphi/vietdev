@@ -27,7 +27,7 @@
             <span class="day">{{ q.date }}</span>
             <span>by </span>
             <a href="#">{{ q.author.username }}</a>
-            <span class="like"><a href="/qna/{{ q|already_like:user }}/question/{{ q.id }}">{{ q|already_like:user }}</a></span>
+            <span id="{{ q|already_like:user }}"><a href="/qna/{{ q|already_like:user }}/question/{{ q.id }}">{{ q|already_like:user }}</a></span>
         </div>
 
         <hr>

@@ -63,19 +63,12 @@ a.question_title:hover{
     color: #9A4444;
 }
 
-.like {
-    color: #555555;
-}
-
-.unlike {
-    color: #555555;
-}
-
 .content {
     padding-left: 20px;
 }
 
-.content .like,.unlike {
+.like,.unlike {
+    color: #555555;
     padding-left: 10px;
     font-weight: bold;
 }

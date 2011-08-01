@@ -16,9 +16,9 @@
             <span class="day">{{ question.date }}</span>
             <span>by </span>
             <a href="#">{{ question.author.username }}</a>
-           	<span class="like" id="question_{{ question.id }}">
+           	<span class="{{ question|already_like:user }}" id="question_{{ question.id }}">
            		<a href="javascript:;" onclick="like('question', '{{ question.id }}')" class="status_like">{{ question|already_like:user }}</a>
-                <span class="total"></span>
+                <span class="total">{{ question|count_like }}</span>
            	</span>
         </div>
     </div>
@@ -32,9 +32,9 @@
                 <span class="day">{{ a.date }}</span>
                 <span>by </span>
                 <a href="#">{{ a.author.username }}</a>
-                <span class="like" id="answer_{{ a.id }}" >
+                <span class="{{ a|already_like:user }}" id="answer_{{ a.id }}" >
                 	<a href="javascript:;" onclick="like('answer', '{{ a.id }}')" class="status_like">{{ a|already_like:user }}</a>
-                    <span class="total"></span>
+                    <span class="total">{{ a|count_like }}</span>
            		</span>
             </div>
         </div>

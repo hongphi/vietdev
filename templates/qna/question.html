@@ -2,6 +2,10 @@
 
 {% load tagslib %}
 
+{% block extra_static %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/vietdev.js"></script>
+{% endblock %}
+
 {% block main %}
 	<a href="/qna/ask/">Create question</a><br><br>
     <h1 class="question_title">{{ question.title }}</h1>
@@ -12,7 +16,9 @@
             <span class="day">{{ question.date }}</span>
             <span>by </span>
             <a href="#">{{ question.author.username }}</a>
-            <span class="like"><a href="/qna/{{ question|already_like:user }}/question/{{ question.id }}">{{ question|already_like:user }}</a></span>
+           	<span class="like" id="q_{{ question.id }}" onclick="like('question', '{{ question.id }}')">
+           		<span class='status'>Like</span><span class="total"></span>
+           	</span>
         </div>
     </div>
     <br>
@@ -25,7 +31,9 @@
                 <span class="day">{{ a.date }}</span>
                 <span>by </span>
                 <a href="#">{{ a.author.username }}</a>
-                <span class="like"><a href="/qna/{{ a|already_like:user }}/answer/{{ a.id }}">{{ a|already_like:user }}</a></span>
+                <span class="like" id="q_{{ a.id }}" onclick="like('answer', '{{ a.id }}')">
+                	<span class='status'>Like</span><span class="total"></span>           			
+           		</span>
             </div>
         </div>
     	<hr>

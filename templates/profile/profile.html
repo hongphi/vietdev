@@ -9,7 +9,9 @@
 {% block main %}
 	<div class='view'>
 		<dl class="profile">
-		  <dt><img alt="{{ profile.user.username }}" height="80" src="{{ profile.avatar.url }}"></dt>  
+		  {% if profile.avatar %}
+		  <dt><img alt="{{ profile.user.username }}" height="80" src="{{ profile.avatar.url }}"></dt>
+		  {% endif %}  
 	  	  <dd> <h3 style="margin-top: 30px;"> {{ profile|fullname }}</h3></dd>
 		  <dt>Website</dt> 
 		  <dd>{{ profile.website }}</dd>

@@ -35,11 +35,16 @@ def profile_update(request):
     Update profile of User.
     @param request:
     '''
-    profile = Profile.objects.get(user = request.user)
+    profile, created = Profile.objects.get_or_create(user = request.user)
+    if created:
+        active = Activity(user = request.user)
+        active.save()
+
     if request.method == "POST":
         profile_form = ProfileForm(request.POST, request.FILES, instance = profile)
         if profile_form.is_valid():
-            profile_form.save(False)
+            profile_form.save()
+            return HttpResponseRedirect('/profile/')
     else:        
         profile_form = ProfileForm(instance = profile)
             

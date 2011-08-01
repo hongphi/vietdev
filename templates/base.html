@@ -30,6 +30,7 @@
     		<li><a href="/qna/">Home</a></li>
         {% if request.user.is_authenticated %}
             <li><a href="/profile/" class="username"><strong>{{ request.user.username }}</strong></a></li>
+            <li><a href="/profile/update/">Update Profile</a></li>
             <li><a href="{% url auth_password_change %}">Password</a></li>
             <li><a href="{% url user_signout %}?next={{ request.path }}">Logout</a></li>
         {% else %}

@@ -75,7 +75,7 @@ a.question_title:hover{
     padding-left: 20px;
 }
 
-.content .like {
+.content .like,.unlike {
     padding-left: 10px;
     font-weight: bold;
 }

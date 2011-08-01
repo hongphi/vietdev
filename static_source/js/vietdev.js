@@ -1,20 +1,20 @@
 function like(type, id) {
-	if ($('#q_' + id).hasClass('like')) {
+	if ($('#' + type + '_' + id).hasClass('like')) {
 		var url = "/qna/like/" + type + "/" + id;
-		$.get(url, function (data) {			
-			$('#q_' + id).removeClass('like');
-			$('#q_' + id).addClass('unlike');
-			$('#q_' + id).find('.status').text("Unlike");
-			$('#q_' + id).find('.total').text(data);
+		$.get(url, function (data) {
+			$('#' + type + '_' + id).removeClass('like');
+			$('#' + type + '_' + id).addClass('unlike');
+			$('#' + type + '_' + id).find('.status_like').text("unlike");
+			$('#' + type + '_' + id).find('.total').text(data);
 		});
-		
+
 	} else {
 		var url = "/qna/unlike/" + type + "/" + id;
-		$.get(url, function (data) {			
-			$('#q_' + id).removeClass('unlike');
-			$('#q_' + id).addClass('like');
-			$('#q_' + id).find('.status').text("Like");
-			$('#q_' + id).find('.total').text(data);
+		$.get(url, function (data) {
+			$('#' + type + '_' + id).removeClass('unlike');
+			$('#' + type + '_' + id).addClass('like');
+			$('#' + type + '_' + id).find('.status_like').text("like");
+			$('#' + type + '_' + id).find('.total').text(data);
 		});
-	}		
+	}
 }

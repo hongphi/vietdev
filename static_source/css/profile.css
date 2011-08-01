@@ -1,0 +1,26 @@
+
+.view {
+	margin-left: 100px;
+	width: 500px;
+}
+.profile {
+	display: block;	
+	clear: both;
+}
+
+.profile dt {
+	color: red;		
+	position: inherit;
+	float: left;
+    font-weight: bold;
+    margin-right: 30px;
+    padding: 5px;
+    width: 80px;
+	
+}
+
+.profile dd {
+	margin:2px 0;
+    padding:5px 0;
+	background: transparent;
+}

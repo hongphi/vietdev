@@ -42,8 +42,8 @@ def ask(request):
                               {"form": q_form}, 
                               context_instance = RequestContext(request))
 def home_list(request):
-    question_list = Question.objects.all().order_by('date')
-    paginator = Paginator(question_list, 2) # 2 questions per page
+    question_list = Question.objects.all().order_by('-date')
+    paginator = Paginator(question_list, 10) # 2 questions per page
 
     questions = paginator.page(1)
 

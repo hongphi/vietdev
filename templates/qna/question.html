@@ -31,7 +31,7 @@
             <div class="question_info">
                 <span class="day">{{ a.date }}</span>
                 <span>by </span>
-                <a href="#">{{ a.author.username }}</a>
+                <a href="/profile/{{ question.author.username }}/">{{ a.author.username }}</a>
                 <span class="{{ a|already_like:user }}" id="answer_{{ a.id }}" >
                 	<a href="javascript:;" onclick="like('answer', '{{ a.id }}')" class="status_like">{{ a|already_like:user }}</a>
                     <span class="total">{{ a|count_like }}</span>
@@ -42,6 +42,9 @@
     {% endfor %}
     <h2 class="answer_title"> Your Answer</h2>
     <form method="post" action="/qna/answer/{{ question.id }}/"> {% csrf_token %}
+    	{% if form.errors %}
+    		<p>{{ form.content.error }}</p>
+    	{% endif %}
     	<textarea rows="10" cols="40" name="content"></textarea><br>
     	<input type="submit" value="Submit">
     </form>

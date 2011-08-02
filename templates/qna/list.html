@@ -30,7 +30,7 @@
             <a href="/qna/question/{{ q.id }}/" class="question_title">{{ q.title }}</a><br>
             <span class="day">{{ q.date }}</span>
             <span>by </span>
-            <a href="#">{{ q.author.username }}</a>
+            <a href="/profile/{{ q.author.username }}">{{ q.author.username }}</a>
             <span class="{{ q|already_like:user }}" id="question_{{ q.id }}">
                 <a href="javascript:;" onclick="like('question', '{{ q.id }}')" class="status_like">{{ q|already_like:user }}</a>
             </span>

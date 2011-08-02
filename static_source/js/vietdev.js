@@ -5,7 +5,8 @@ function like(type, id) {
 			$('#' + type + '_' + id).removeClass('like');
 			$('#' + type + '_' + id).addClass('unlike');
 			$('#' + type + '_' + id).find('.status_like').text("unlike");
-//			$('#' + type + '_' + id).find('.total').text(data);
+			$('#' + type + '_' + id).find('.total').text(data);
+            $('#q_' + id).find('.number').text(data)
 		});
 
 	} else {
@@ -14,7 +15,8 @@ function like(type, id) {
 			$('#' + type + '_' + id).removeClass('unlike');
 			$('#' + type + '_' + id).addClass('like');
 			$('#' + type + '_' + id).find('.status_like').text("like");
-//			$('#' + type + '_' + id).find('.total').text(data);
+			$('#' + type + '_' + id).find('.total').text(data);
+            $('#q_' + id).find('.number').text(data)
 		});
 	}
 }

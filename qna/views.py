@@ -6,6 +6,7 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template.defaultfilters import slugify
 from django.views.decorators.csrf import csrf_protect
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 import json
 from qna.models import Question, Answer
@@ -40,9 +41,28 @@ def ask(request):
     return render_to_response('qna/ask.html',
                               {"form": q_form}, 
                               context_instance = RequestContext(request))
+def home_list(request):
+    question_list = Question.objects.all().order_by('date')
+    paginator = Paginator(question_list, 2) # 2 questions per page
 
-def list_question(request):
-    questions = Question.objects.all().order_by('-date')
+    questions = paginator.page(1)
+
+    return render_to_response('qna/list.html',
+                              {'questions': questions,
+                               'user': request.user},
+                              context_instance = RequestContext(request))
+
+def list_question(request, page):
+    question_list = Question.objects.all().order_by('date')
+    paginator = Paginator(question_list, 2) # 2 questions per page
+    try:
+        questions = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        questions = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        questions = paginator.page(paginator.num_pages)
     return render_to_response('qna/list.html',
                               {'questions': questions,
                                'user': request.user},

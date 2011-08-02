@@ -9,8 +9,8 @@
 {% block main %}
 	<a href="/qna/ask/">Create question</a>
     <br>
-    {% for q in questions %}
-        <div class="status like">
+    {% for q in questions.object_list %}
+        <div class="status like" id="q_{{ q.id }}">
             <div class="number">
                 {{ q|count_like }}
             </div>
@@ -38,4 +38,19 @@
 
         <hr>
     {% endfor %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if questions.has_previous %}
+                <a href="/qna/page/{{ questions.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ questions.number }} of {{ questions.paginator.num_pages }}.
+            </span>
+
+            {% if questions.has_next %}
+                <a href="/qna/page/{{ questions.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
 {% endblock %}

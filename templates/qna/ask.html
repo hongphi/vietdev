@@ -4,6 +4,10 @@
     <h1>Have any question?</h1>
     <form action="/qna/ask/" method="post">{% csrf_token %}
         {{ form.as_p }}
+        <p>
+            <label for="id_tags">Tags :</label>
+            <input id="id_tags" name="tags" type="text">
+        </p>
         <input type="submit" value="Ask">
     </form>
 

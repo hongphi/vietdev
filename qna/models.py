@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.admin.models import User
 
+import tagging
+
 # Create your models here.
 class Question(models.Model):
     title       = models.CharField(max_length = 100)                                        # Title of question
@@ -8,7 +10,6 @@ class Question(models.Model):
     content     = models.TextField(max_length = 1000)                                       # Content of question
     author      = models.ForeignKey(User, related_name = "q_author")                        # Who is ask this question
     likes       = models.ManyToManyField(User, related_name = "q_likes", blank = True)      # User like this question
-    tags        = models.CharField(max_length = 100, blank = True)                          # This question can be in tags
     bonus       = models.IntegerField(default = 0)                                          # Bonus points of this question
 
     def __unicode__(self):
@@ -29,3 +30,5 @@ class Answer(models.Model):
 
     def __unicode__(self):
         return self.author.username
+
+tagging.register(Question)

@@ -31,9 +31,10 @@ def ask(request):
             title = request.POST['title']
             content = request.POST['content']
             tags = request.POST['tags']
-            question = Question(title = title, content = content, tags = tags, bonus = 0)
+            question = Question(title = title, content = content, bonus = 0)
             question.author = request.user
             question.save()
+            question.tags = tags
             return HttpResponseRedirect('/qna/question/%d/' % question.id)
     else:
         q_form = QuestionForm()

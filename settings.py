@@ -120,6 +120,7 @@ INSTALLED_APPS = (
     'qna',
     'qna.templatetags',
     'profile',
+    'tagging',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

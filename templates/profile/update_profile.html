@@ -1,10 +1,66 @@
 {% extends "base.html" %}
 
+
+{% block extra_static %}
+<link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/profile.css" />
+<link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/ui.theme.css" />
+
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ui.core.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ui.datepicker.js"></script>
+<script type="text/javascript">
+	Date.firstDayOfWeek = 0;
+	Date.format = 'yyyy-mm-dd';
+	$(function() {
+		$("#id_birthday").datepicker();
+		$.datepicker.formatDate('yyyy-mm-dd');
+	});
+</script>
+{% endblock %}
+
+	
 {% block main %}
-    <h1>Update your Profile</h1>
+    
     <form action="/profile/{{ user.username }}/update/" method="post" enctype="multipart/form-data">{% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Update">
+    	<div class="view">
+    		<h1>Update your Profile</h1>
+	        <dl class="profile">
+	        	<dt>Your name</dt>
+	        	<dd>{{ form.first_name }} {{ form.middle_name }} {{ form.last_name }}</dd>
+	        	<dt>Birthday</dt>
+	        	<dd>{{ form.birthday }}</dd>
+	        	        	
+	        	<dt>Gender</dt>
+	        	<dd>{{ form.gender }}</dd>
+	        	
+	        	<dt>Avatar</dt>
+	        	<dd>{{ form.avatar }}</dd>
+	        	
+	        	<dt>Phone</dt>
+	        	<dd><lable >Work:</lable> {{ form.work_phone }} <label class="phone">Home:</label> {{ form.home_phone }} <label class="phone">Mobile:</label> {{ form.mobile_phone }}</dd>
+	        	
+	        	<dt>Home Address</dt>
+	        	<dd>{{ form.home_address }}</dd>
+	        	
+	        	<dt>Work Address</dt>
+	        	<dd>{{ form.work_address }}</dd>
+	        	
+	        	<dt>Website</dt>
+	        	<dd>{{ form.website }}</dd>
+	        	
+	        	<dt>Education</dt>
+	        	<dd>{{ form.education }}</dd>
+	        	
+	        	<dt>About you</dt>
+	        	<dd>{{ form.about_user }}</dd>
+	        	
+	        	<dt>Interests</dt>
+	        	<dd>{{ form.interests }}</dd>
+        	</dl>
+        	<input type="submit" value="Update" >
+        </div>
+        
     </form>
     
 {% endblock %}

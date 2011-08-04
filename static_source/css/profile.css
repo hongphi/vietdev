@@ -1,7 +1,7 @@
 
 .view {
 	margin-left: 100px;
-	width: 500px;
+	width: 600px;
 }
 .profile {
 	display: block;	
@@ -9,18 +9,37 @@
 }
 
 .profile dt {
-	color: red;		
+	color: #666666;
 	position: inherit;
 	float: left;
     font-weight: bold;
     margin-right: 30px;
     padding: 5px;
-    width: 80px;
+    width: 91px;
 	
 }
 
 .profile dd {
-	margin:2px 0;
-    padding:5px 0;
+	margin: 2px 0;
+    padding: 5px 5px;
 	background: transparent;
+}
+
+#id_home_address, #id_work_address, #id_website {
+	width: 350px;
+}
+#id_work_phone, #id_home_phone, #id_mobile_phone {
+	width: 80px;
+}
+
+#id_first_name, #id_middle_name, #id_last_name {
+	width: 100px;
+}
+
+#id_education, #id_about_user, #id_interests {
+	width: 450px;
+	font: 12px/1.4em Verdana,sans-serif;
+}
+.phone {
+	margin-left: 10px;
 }

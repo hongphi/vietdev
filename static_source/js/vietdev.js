@@ -20,3 +20,7 @@ function like(type, id) {
 		});
 	}
 }
+
+$(document).ready(function(){
+    $('#markItUp').markItUp(mySettings);
+});

@@ -2,6 +2,8 @@
 
 {% load tagslib %}
 
+{% load markup %}
+
 {% block extra_static %}
 <script type="text/javascript" src="{{ STATIC_URL }}js/vietdev.js"></script>
 {% endblock %}
@@ -27,7 +29,7 @@
     <hr>
     {% for a in answers %}
         <div class="content">
-            <p>{{ a.content|linebreaksbr }}</p>
+            <div>{{ a.content|markdown }}</div>
             <div class="question_info">
                 <span class="day">{{ a.date }}</span>
                 <span>by </span>
@@ -45,7 +47,7 @@
     	{% if form.errors %}
     		<p>{{ form.content.error }}</p>
     	{% endif %}
-    	<textarea rows="10" cols="40" name="content"></textarea><br>
+    	<textarea id="markItUp" rows="10" cols="40" name="content"></textarea><br>
     	<input type="submit" value="Submit">
     </form>
 {% endblock %}

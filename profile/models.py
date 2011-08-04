@@ -51,6 +51,11 @@ class Profile(models.Model):
         '''            
         return '%s %s %s' % (self.first_name, self.middle_name, self.last_name)
 
+class Settings(models.Model):
+    user            = models.OneToOneField(User)
+    hidden_gender   = models.BooleanField(default = False)
+    hidden_old      = models.BooleanField(default = False)
+    hidden_phone    = models.BooleanField(default = False)  
     
     
 class Experience(models.Model):

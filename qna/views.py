@@ -77,7 +77,8 @@ def show_question(request, id):
         return render_to_response('qna/question.html',
                                   {"question" : question,
                                    "answers": answers,
-                                   "form" : form },
+                                   "form" : form,
+                                   "user": request.user},
                                   context_instance = RequestContext(request))
     except:
         raise Http404()

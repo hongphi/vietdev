@@ -282,3 +282,84 @@ legend {
     position: absolute;
     left: 0;
 }
+/********** TAGS ************/
+a {
+    color: #0077CC;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/********** HEADER ************/
+#custom-header {
+    background-color: #EEEEEE;
+    height: 35px;
+    margin-bottom: -26px;
+}
+
+#header {
+    margin: 0 auto;
+    width: 960px;
+    height: 31px;
+}
+
+#topbar {
+    float: right;
+    height: 31px;
+}
+
+#hlinks {
+    float: left;
+}
+
+#hlinks a {
+    font-weight: bold;
+}
+
+.lsep {
+    color: #CCCCCC;
+    margin: 0 2px;
+    font-size: 110%;
+}
+
+#hmenus {
+    float: left;
+    margin-top: 10px;
+    padding: 30px 0;
+    width: 100%;
+}
+
+.nav {
+    float: left;
+}
+
+.askquestion {
+    float: right;
+}
+
+.nav li {
+    float: left;
+    display: block;
+    margin: 0 7px 0 0;
+    padding: 0;
+}
+
+.nav a {
+    padding: 6px 12px;
+    font-weight: bold;
+    background-color: #777777;
+    color: #FFFFFF;
+}
+
+.nav a.you_are_here {
+    background-color: #FF9900;
+}
+
+.nav a:hover {
+    background-color: #FF9900;
+}
+
+/********** CONTENT ************/
+#content {
+    margin: 0 auto;
+    width: 960px;
+}

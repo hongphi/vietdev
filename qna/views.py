@@ -12,7 +12,7 @@ import json
 from qna.models import Question, Answer
 import datetime
 from qna.forms import QuestionForm, AnswerForm
-
+from tagging.models import Tag
 
 def home(request):
     """
@@ -121,3 +121,20 @@ def unlike(request, type, id):
         a = Answer.objects.get(pk = id)
         a.likes.remove(request.user)
         return HttpResponse(a.likes.count())
+
+def tags_all(request):
+    tags = Tag.objects.usage_for_model(Question, counts=True)
+    type = 'popular'
+    if 'sort' in request.GET:
+        sort = request.GET['sort']
+        if sort == 'name':
+            type = 'name'
+            tags.sort()
+        else:
+            if sort == 'new':
+                type = 'new'
+                tags.sort(reverse = True)
+    return render_to_response('qna/tags.html',
+                              {"tags": tags,
+                               "type": type,},
+                              context_instance = RequestContext(request))

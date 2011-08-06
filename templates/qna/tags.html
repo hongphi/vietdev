@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% load tagslib %}
+
+{% block extra_static %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/vietdev.js"></script>
+{% endblock %}
+
+{% block main %}
+<div id="mainbar">
+    <div class="subheader">
+        <div id="tabs">
+    {% if type == 'popular' %}
+            <a class="you_are_here" href="#">popular</a>
+            <a href="/qna/tags/?sort=name">name</a>
+            <a href="/qna/tags/?sort=new">new</a>
+    {% else %}
+        {% if type == 'name'%}
+            <a href="/qna/tags/">popular</a>
+            <a class="you_are_here" href="#">name</a>
+            <a href="/qna/tags/?sort=new">new</a>
+        {% else %}
+            <a href="/qna/tags/">popular</a>
+            <a href="/qna/tags/?sort=name">name</a>
+            <a class="you_are_here" href="#">new</a>
+        {% endif %}
+    {% endif %}
+        </div>
+    </div>
+</div>
+{% for t in tags %}
+    <p>{{ t.name }} x {{ t.count }}</p>
+{% endfor %}
+{% endblock %}

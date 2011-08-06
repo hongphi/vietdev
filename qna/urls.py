@@ -10,4 +10,5 @@ urlpatterns = patterns('qna.views',
     url(r'^question/(?P<id>\d+)/$','show_question'),
     url(r'^answer/(?P<id_question>\d+)/$','answer'),
     url(r'like/(?P<type>\w+)/(?P<id>\d+)/$','like'),
+    url(r'tags/$','tags_all')
 )

@@ -299,7 +299,7 @@ a {
 #header {
     margin: 0 auto;
     width: 960px;
-    height: 31px;
+    height: 131px;
 }
 
 #topbar {
@@ -362,4 +362,111 @@ a {
 #content {
     margin: 0 auto;
     width: 960px;
+}
+
+.subheader {
+    height: 34px;
+    border-bottom: 1px solid #666666;
+    margin-bottom: 15px;
+}
+
+#tabs {
+    float: right;
+    font-weight: bold;
+}
+
+#tabs a {
+    border: 1px solid #FFFFFF;
+    color: #777777;
+    margin-right: 10px;
+    line-height: 22px;
+    height: 24px;
+    padding: 0 11px;
+}
+
+#tabs a:hover {
+    border-color: #777777 #777777 #FFFFFF;
+    padding: 5px 11px 11px;
+}
+
+#tabs a.you_are_here {
+    border-color: #777777 #777777 #FFFFFF;
+    padding: 10px 11px;
+    height: 30px;
+    color: #000000;
+    font-size: 120%;
+    line-height: 28px;
+}
+
+#tabs a.you_are_here:hover {
+    
+}
+
+#question-mini-list {
+    
+}
+
+.question-summary {
+    padding: 11px 0;
+    border-bottom: 1px dotted #999999;
+    overflow: auto;
+}
+
+.votes {
+    float: left;
+    padding: 5px;
+    height: 38px;
+    width: 38px;
+    color: #555555;
+    text-align: center;
+}
+
+.mini-counts {
+    font-size: 180%;
+    font-weight: bold;
+    line-height: 25px;
+}
+
+.name {
+    line-height: 13px;
+}
+
+.question-summary .status {
+    width: 48px;
+    height: 38px;
+    padding: 5px;
+    float: left;
+}
+
+.views {
+    width: 40px;
+    height: 38px;
+    float: left;
+    padding: 5px;
+    text-align: center;
+    color: #999999;
+}
+
+.tags {
+    float: left;
+}
+
+.tags a.post-tag {
+    background-color: #E0EAF1;
+    border-bottom: 1px solid #3E6D8E;
+    border-right: 1px solid #7F9FB6;
+    color: #3E6D8E;
+    padding: 3px 4px;
+}
+
+.tags a.post-tag:hover {
+    text-decoration: none;
+    background-color: #3E6D8E;
+    border-bottom: 1px solid #36707D;
+    border-right: 1px solid #36707D;
+    color: #E0EAF1;
+}
+
+.started {
+    float: right;
 }

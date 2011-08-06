@@ -7,46 +7,53 @@
 {% endblock %}
 
 {% block main %}
-<div>
+<div id="mainbar">
+    <div class="subheader">
+        <div id="tabs">
+            <a class="you_are_here" href="#">interesting</a>
+            <a href="#">hot</a>
+            <a href="#">week</a>
+            <a href="#">month</a>
+        </div>
+    </div>
+    <div id="question-mini-list">
     {% for q in questions.object_list %}
-        <div class="status like" id="q_{{ q.id }}">
-            <div class="number">
-                {{ q|count_like }}
+        <div class="question-summary">
+            <div class="votes" id="q_{{ q.id }}">
+                <div class="mini-counts">{{ q|count_like }}</div>
+                <div class="name">likes</div>
             </div>
-            <div>
-                 like
+            <div class="status {{ q|count_answer|no_answer }}">
+                <div class="mini-counts">{{ q|count_answer }}</div>
+                <div class="name">answer{{ q|count_answer|pluralize }}</div>
+            </div>
+            <div class="views">
+                <div class="mini-counts">0</div>
+                <div class="name">views</div>
+            </div>
+            <div class="question_info">
+                <h3><a href="/qna/question/{{ q.id }}/" class="question_title">{{ q.title }}</a></h3>
+                <div class="tags">
+                {% if q.tags %}
+                    {% for t in q.tags %}
+                        <a class="post-tag" href="#">{{ t }}</a>
+                    {% endfor %}
+                {% endif %}
+                </div>
+                <div class="started">
+                    <span class="day">{{ q.date }}</span>
+                    <span>by </span>
+                    <a href="/profile/{{ q.author.username }}">{{ q.author.username }}</a>
+                    {% if user.id > 0 %}
+                    <span class="{{ q|already_like:user }}" id="question_{{ q.id }}">
+                        <a href="javascript:;" onclick="like('question', '{{ q.id }}')" class="status_like">{{ q|already_like:user }}</a>
+                    </span>
+                    {% endif %}
+                </div>
             </div>
         </div>
-        <div class="status {{ q|count_answer|no_answer }}">
-            <div class="number">
-                {{ q|count_answer }}
-            </div>
-            <div>
-                 answer{{ q|count_answer|pluralize }}
-            </div>
-        </div>
-        <div class="question_info">
-            <a href="/qna/question/{{ q.id }}/" class="question_title">{{ q.title }}</a><br>
-            <span class="day">{{ q.date }}</span>
-            <span>by </span>
-            <a href="/profile/{{ q.author.username }}">{{ q.author.username }}</a>
-            {% if user.id > 0 %}
-            <span class="{{ q|already_like:user }}" id="question_{{ q.id }}">
-                <a href="javascript:;" onclick="like('question', '{{ q.id }}')" class="status_like">{{ q|already_like:user }}</a>
-            </span>
-            {% endif %}
-            {% if q.tags %}
-            <span>
-                Tags :
-                {% for t in q.tags %}
-                    <a href="#">{{ t }}</a>,
-                {% endfor %}
-            </span>
-            {% endif %}
-        </div>
-
-        <hr>
     {% endfor %}
+    </div>
     <div class="pagination">
         <span class="step-links">
             {% if questions.has_previous %}

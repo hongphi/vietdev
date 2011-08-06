@@ -26,12 +26,17 @@ a.question_title:hover{
 .question_info{
     margin-left: 10px;
     float: left;
+    width: 500px;
 }
 
 .question_info .day{
     font-family: Arial,Liberation Sans,DejaVu Sans,sans-serif;
     font-weight: bold;
     color: #999999;
+}
+
+.question_info h3 {
+    margin: 0 0 5px 0;
 }
 
 .question_info a {

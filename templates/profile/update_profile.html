@@ -20,9 +20,9 @@
 {% block main %}
     
     <form action="/profile/{{ user.username }}/update/" method="post" enctype="multipart/form-data">{% csrf_token %}
-    	<div class="view">
-    		<h1>Update your Profile</h1>
-	        <dl class="profile">
+    	<fieldset class="info_profile">
+    		<legend><h1>Update your Profile</h1></legend>
+    		<dl class="profile">
 	        	<dt>Your name</dt>
 	        	<dd>{{ form.first_name }} {{ form.middle_name }} {{ form.last_name }}</dd>
 	        	<dt>Birthday</dt>
@@ -54,9 +54,11 @@
 	        	
 	        	<dt>Interests</dt>
 	        	<dd>{{ form.interests }}</dd>
+	        	
+	        	<dt></dt>
+	        	<dd><input type="submit" value="Update" ></dd>
         	</dl>
-        	<input type="submit" value="Update" >
-        </div>
+    	</fieldset>
         
     </form>
     

@@ -78,16 +78,16 @@ a.question_title:hover{
     font-weight: bold;
 }
 
-.ask_content {
+.ask_info {
 	margin-left: 100px;
 	width: 900px;
 }
-dl {
+.ask_content {
 	display: block;	
 	clear: both;
 }
 
-dl dt {
+.ask_content dt {
 	color: #666666;
 	position: inherit;
 	float: left;
@@ -99,7 +99,7 @@ dl dt {
 	
 }
 
-dl dd {
+.ask_content dd {
 	margin: 0px 0;
     padding: 5px 5px;
 	background: transparent;

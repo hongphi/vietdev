@@ -20,49 +20,45 @@
 {% block main %}
     
     <form action="/profile/{{ user.username }}/update/" method="post" enctype="multipart/form-data">{% csrf_token %}
-    	<div >
-    		<fieldset class="info_profile">
-    			<legend><h1>Update your Profile</h1></legend>
-    			<dl class="profile">
-		        	<dt>Your name</dt>
-		        	<dd>{{ form.first_name }} {{ form.middle_name }} {{ form.last_name }}</dd>
-		        	<dt>Birthday</dt>
-		        	<dd>{{ form.birthday }}</dd>
-		        	        	
-		        	<dt>Gender</dt>
-		        	<dd>{{ form.gender }}</dd>
-		        	
-		        	<dt>Avatar</dt>
-		        	<dd>{{ form.avatar }}</dd>
-		        	
-		        	<dt>Phone</dt>
-		        	<dd><lable >Work:</lable> {{ form.work_phone }} <label class="phone">Home:</label> {{ form.home_phone }} <label class="phone">Mobile:</label> {{ form.mobile_phone }}</dd>
-		        	
-		        	<dt>Home Address</dt>
-		        	<dd>{{ form.home_address }}</dd>
-		        	
-		        	<dt>Work Address</dt>
-		        	<dd>{{ form.work_address }}</dd>
-		        	
-		        	<dt>Website</dt>
-		        	<dd>{{ form.website }}</dd>
-		        	
-		        	<dt>Education</dt>
-		        	<dd>{{ form.education }}</dd>
-		        	
-		        	<dt>About you</dt>
-		        	<dd>{{ form.about_user }}</dd>
-		        	
-		        	<dt>Interests</dt>
-		        	<dd>{{ form.interests }}</dd>
-		        	
-		        	<dt></dt>
-		        	<dd><input type="submit" value="Update" ></dd>
-	        	</dl>
+   		<fieldset class="info_profile">
+   			<legend><h1>Update your Profile</h1></legend>
+   			<dl class="profile">
+	        	<dt>Your name</dt>
+	        	<dd>{{ form.first_name }} {{ form.middle_name }} {{ form.last_name }}</dd>
+	        	<dt>Birthday</dt>
+	        	<dd>{{ form.birthday }}</dd>
+	        	        	
+	        	<dt>Gender</dt>
+	        	<dd>{{ form.gender }}</dd>
 	        	
-    		</fieldset>
-        </div>
-        
+	        	<dt>Avatar</dt>
+	        	<dd>{{ form.avatar }}</dd>
+	        	
+	        	<dt>Phone</dt>
+	        	<dd><lable >Work:</lable> {{ form.work_phone }} <label class="phone">Home:</label> {{ form.home_phone }} <label class="phone">Mobile:</label> {{ form.mobile_phone }}</dd>
+	        	
+	        	<dt>Home Address</dt>
+	        	<dd>{{ form.home_address }}</dd>
+	        	
+	        	<dt>Work Address</dt>
+	        	<dd>{{ form.work_address }}</dd>
+	        	
+	        	<dt>Website</dt>
+	        	<dd>{{ form.website }}</dd>
+	        	
+	        	<dt>Education</dt>
+	        	<dd>{{ form.education }}</dd>
+	        	
+	        	<dt>About you</dt>
+	        	<dd>{{ form.about_user }}</dd>
+	        	
+	        	<dt>Interests</dt>
+	        	<dd>{{ form.interests }}</dd>
+	        	
+	        	<dt></dt>
+	        	<dd><input type="submit" value="Update" ></dd>
+        	</dl>
+   		</fieldset>
     </form>
     
 {% endblock %}

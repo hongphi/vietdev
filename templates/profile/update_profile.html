@@ -20,7 +20,7 @@
 {% block main %}
     
     <form action="/profile/{{ user.username }}/update/" method="post" enctype="multipart/form-data">{% csrf_token %}
-    	<div class="view">
+    	<div class="info_profile">
     		<h1>Update your Profile</h1>
 	        <dl class="profile">
 	        	<dt>Your name</dt>

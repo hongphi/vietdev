@@ -124,12 +124,13 @@ def unlike(request, type, id):
 
 def tags_all(request):
     tags = Tag.objects.usage_for_model(Question, counts=True)
+    
     type = 'popular'
     if 'sort' in request.GET:
         sort = request.GET['sort']
         if sort == 'name':
             type = 'name'
-            tags.sort()
+            tags.sort(cmp = (lambda x, y: cmp(x.name,y.name)), reverse=False)
         else:
             if sort == 'new':
                 type = 'new'
@@ -138,3 +139,4 @@ def tags_all(request):
                               {"tags": tags,
                                "type": type,},
                               context_instance = RequestContext(request))
+    

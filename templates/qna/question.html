@@ -13,7 +13,7 @@
     <h1 class="question_title">{{ question.title }}</h1>
     <hr>
     <div class="content">
-        <p>{{ question.content|linebreaksbr }}</p>
+        <p>{{ question.content|linebreaksbr|markdown }}</p>
         <div class="question_info">
             <span class="day">{{ question.date }}</span>
             <span>by </span>

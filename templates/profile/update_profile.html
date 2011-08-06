@@ -10,11 +10,8 @@
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ui.widget.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ui.datepicker.js"></script>
 <script type="text/javascript">
-	Date.firstDayOfWeek = 0;
-	Date.format = 'yyyy-mm-dd';
 	$(function() {
 		$("#id_birthday").datepicker();
-		$.datepicker.formatDate('yyyy-mm-dd');
 	});
 </script>
 {% endblock %}

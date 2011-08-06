@@ -1,7 +1,9 @@
 
-.view {
+.info_profile {
 	margin-left: 100px;
 	width: 600px;
+	height: 910px;
+	border-radius: 10px;
 }
 .profile {
 	display: block;	

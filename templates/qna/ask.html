@@ -9,9 +9,9 @@
 {% block main %}
     
     <form action="/qna/ask/" method="post">{% csrf_token %}
-    	<div class="ask_content">
+    	<div class="ask_info">
     		<h1>Have any question?</h1>
-	    	<dl>
+	    	<dl class="ask_content">
 	    		<dt>Title</dt>
 	    		<dd>{{ form.title }}</dd>
 	    		

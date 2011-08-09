@@ -15,6 +15,7 @@ WORK_TIME_CHOICES = (
                      (3, '2 - 3 years'),
                      (4, '3 - 4 years'),
                      (5, 'over 5 years'),
+                     (6, 'over 10 years'),
                     )
 
 class Profile(models.Model):
@@ -24,7 +25,8 @@ class Profile(models.Model):
     user         = models.ForeignKey(User, unique = True)
     first_name   = models.CharField(max_length = 15, blank = True)
     middle_name  = models.CharField(max_length = 15, blank = True)
-    last_name    = models.CharField(max_length = 15, blank = True)    
+    last_name    = models.CharField(max_length = 15, blank = True)  
+    occupation   = models.CharField(max_length = 50, blank = True)
     website      = models.URLField(max_length = 50, blank = True, verify_exists = False)
     birthday     = models.DateField(null = True)
     home_address = models.CharField(max_length = 100, blank = True)
@@ -37,7 +39,7 @@ class Profile(models.Model):
     work_phone   = models.CharField(max_length = 15, blank = True)
     mobile_phone = models.CharField(max_length = 15, blank = True)
     interests    = models.TextField(blank = True)
-    joined_date  = models.DateTimeField(auto_now = True)
+    joined_date  = models.DateTimeField(auto_now_add = True)
     
     def get_experience(self):
         return Experience.objects.filter(user = self)

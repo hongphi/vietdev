@@ -14,21 +14,31 @@
 		  {% else %}
 		  <dt><img alt="{{ profile.user.username }}" height="80" src="{{ STATIC_URL }}images/noavatar.jpg"></dt>
 		  {% endif %}  
-	  	  <dd> <h3 style="margin-top: 30px;"> {{ profile|fullname }}</h3></dd>
-		  <dt>Website</dt> 
-		  <dd>{{ profile.website }}</dd>
+	  	  <dd> <h3 style="margin-top: 30px;"> {{ profile.get_full_name|default:"N/A" }}</h3></dd>
+		  
 		  <dt>Birthday</dt>  
-		  <dd>{{ profile.birthday }}</dd>
+		  <dd>{{ profile.birthday|default:"N/A" }}</dd>
+		  
 		  <dt>Gender</dt> 
-		  <dd>{{ profile.gender }}</dd>
+		  <dd>{{ profile.get_gender_display|default:"N/A" }}</dd>
+		  
+		  <dt>Occupation</dt> 
+		  <dd>{{ profile.occupation|default:"N/A" }}</dd>
+		  
+		  <dt>Website</dt> 
+		  <dd>{{ profile.website|default:"N/A" }}</dd>
+		  
 		  <dt>Education</dt> 
-		  <dd>{{ profile.education }}</dd>
+		  <dd>{{ profile.education|default:"N/A" }}</dd>
+		  
 		  <dt>Phone</dt> 
-		  <dd>{{ profile.mobile_phone }}</dd>
+		  <dd>{{ profile.mobile_phone|default:"N/A" }}</dd>
+		  
 		  <dt>About me</dt>  
-		  <dd>{{ profile.about_user }}</dd>
+		  <dd>{{ profile.about_user|default:"N/A" }}</dd>
+		  
 		  <dt>Interests</dt>  
-		  <dd>{{ profile.interests }}</dd>
+		  <dd>{{ profile.interests|default:"N/A" }}</dd>
 		</dl>
 	</div>
 {% endblock %}

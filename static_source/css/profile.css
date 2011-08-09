@@ -2,7 +2,7 @@
 .info_profile {
 	margin-left: 100px;
 	width: 600px;
-	height: 910px;
+	height: 945px;
 	border-radius: 10px;
 }
 .profile {
@@ -37,7 +37,9 @@
 #id_first_name, #id_middle_name, #id_last_name {
 	width: 100px;
 }
-
+#id_occupation {
+	width: 250px;
+}
 #id_education, #id_about_user, #id_interests {
 	width: 450px;
 	font: 12px/1.4em Verdana,sans-serif;

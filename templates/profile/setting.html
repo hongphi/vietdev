@@ -1,5 +1,20 @@
 {% extends "base.html" %}
 
-{% block main %}
+{% block extra_static %}
+<link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/profile.css" />
+{% endblock %}
 
+{% block main %}
+<form name='setting' action="/profile/{{ user.username }}/settings/" method="post">{% csrf_token %}
+	<div class="form_settings">
+		<dl class='settings'>
+			<dt>{{ form.hidden_old }}</dt>
+			<dd>{{ form.hidden_old.label }}</dd>
+			
+			<dt>{{ form.hidden_phone }}</dt>
+			<dd>{{ form.hidden_phone.label }}</dd>
+		</dl>
+		<input class="button" type="submit" value="Save">
+	</div>
+</form>
 {% endblock %}

@@ -2,10 +2,10 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_protect
-from profile.models import Profile, Activity
+from profile.models import Profile, Activity, UserSettings
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
-from profile.forms import ProfileForm
+from profile.forms import ProfileForm, UserSettingsForm
 from django.contrib.auth.models import User
 
 
@@ -59,3 +59,24 @@ def profile_update(request, username):
     return render_to_response('profile/update_profile.html',
                               {"form": profile_form}, 
                               context_instance = RequestContext(request))
+    
+
+@login_required
+@csrf_protect   
+def profile_settings(request, username):
+    '''
+    Settings profile of user
+    '''
+    setting, created = UserSettings.objects.get_or_create(user = request.user)
+    if request.method == "POST":
+        setting_form = UserSettingsForm(request.POST, instance = setting)
+        if setting_form.is_valid():
+            setting_form.save()
+    else:
+        setting_form = UserSettingsForm(instance = setting)
+        
+    return render_to_response('profile/setting.html',
+                              {"form": setting_form}, 
+                              context_instance = RequestContext(request))
+            
+        

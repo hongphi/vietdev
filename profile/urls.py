@@ -5,5 +5,5 @@ urlpatterns = patterns('profile.views',
     url(r'^$', 'profile_home'),
     url(r'^(?P<username>\w+)/$', 'view_profile'),
     url(r'^(?P<username>\w+)/update/$', 'profile_update'),
-
+    url(r'^(?P<username>\w+)/settings/$', 'profile_settings'),
 )

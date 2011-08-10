@@ -12,7 +12,7 @@ import json
 from qna.models import Question, Answer
 import datetime
 from qna.forms import QuestionForm, AnswerForm
-from tagging.models import Tag
+from tagging.models import Tag, TaggedItem
 
 def home(request):
     """
@@ -154,4 +154,14 @@ def tags_all(request):
                               {"tags": tags_divide_4,
                                "type": type,},
                               context_instance = RequestContext(request))
-    
+
+def question_by_tag(request, name):
+    question_list = TaggedItem.objects.get_by_model(Question, name)
+
+    paginator = Paginator(question_list, 10) # 10 questions per page
+
+    questions = paginator.page(1)
+    return render_to_response('qna/list.html',
+                              {'questions': questions,
+                               'user': request.user},
+                              context_instance = RequestContext(request))

@@ -123,6 +123,9 @@ def unlike(request, type, id):
         return HttpResponse(a.likes.count())
 
 def tags_all(request):
+    """
+
+    """
     tags = Tag.objects.usage_for_model(Question, counts=True)
     
     type = 'popular'
@@ -134,9 +137,21 @@ def tags_all(request):
         else:
             if sort == 'new':
                 type = 'new'
-                tags.sort(reverse = True)
+                tags.sort(cmp = (lambda x, y: cmp(x.date,y.date)), reverse=True)
+    else:
+        tags.sort(cmp = (lambda x, y: cmp(x.count,y.count)), reverse=True)
+
+    tags_4 = []
+    tags_divide_4 = []
+    for i in range(0,tags.__len__(),1):
+        tags_4.append(tags[i])
+        if i%4==3:
+            tags_divide_4.append(tags_4)
+            tags_4 = []
+    if tags.__len__()%4 != 0:
+        tags_divide_4.append(tags_4)
     return render_to_response('qna/tags.html',
-                              {"tags": tags,
+                              {"tags": tags_divide_4,
                                "type": type,},
                               context_instance = RequestContext(request))
     

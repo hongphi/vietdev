@@ -39,11 +39,11 @@ a.question_title:hover{
     margin: 0 0 5px 0;
 }
 
-.question_info a {
+.question_info h3 a {
     text-decoration: none;
 }
 
-.question_info a:hover {
+.question_info h3 a:hover {
     text-decoration: underline;
 }
 

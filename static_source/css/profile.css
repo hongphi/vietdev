@@ -1,12 +1,12 @@
-
 .info_profile {
 	margin-left: 100px;
 	width: 600px;
 	height: 945px;
 	border-radius: 10px;
 }
+
 .profile {
-	display: block;	
+	display: block;
 	clear: both;
 }
 
@@ -14,36 +14,62 @@
 	color: #666666;
 	position: inherit;
 	float: left;
-    font-weight: bold;
-    margin-right: 30px;
-    padding: 5px;
-    width: 91px;
-	
+	font-weight: bold;
+	margin-right: 30px;
+	padding: 5px;
+	width: 91px;
 }
 
 .profile dd {
 	margin: 2px 0;
-    padding: 5px 5px;
+	padding: 5px 5px;
 	background: transparent;
 }
 
-#id_home_address, #id_work_address, #id_website {
+.form_settings {
+	margin-left: 100px;
+	width: 600px;
+}
+
+.settings {
+	display: block;
+	clear: both;
+}
+
+.settings dt {
+	float: left;
+	font-weight: bold;
+	margin-right: 10px;
+	padding: 5px;
+}
+
+.settings dd {
+	margin: 2px 0;
+	padding: 5px 5px;
+	background: transparent;
+}
+
+#id_home_address,#id_work_address,#id_website {
 	width: 350px;
 }
-#id_work_phone, #id_home_phone, #id_mobile_phone {
+
+#id_work_phone,#id_home_phone,#id_mobile_phone {
 	width: 80px;
 }
 
-#id_first_name, #id_middle_name, #id_last_name {
+#id_first_name,#id_middle_name,#id_last_name {
 	width: 100px;
 }
+
 #id_occupation {
 	width: 250px;
 }
-#id_education, #id_about_user, #id_interests {
+
+#id_education,#id_about_user,#id_interests {
 	width: 450px;
-	font: 12px/1.4em Verdana,sans-serif;
+	font: 12px/1.4em Verdana, sans-serif;
 }
+
 .phone {
 	margin-left: 10px;
 }

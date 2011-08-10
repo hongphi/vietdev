@@ -13,15 +13,25 @@
     		<h1>Have any question?</h1>
 	    	<dl class="ask_content">
 	    		<dt>Title</dt>
-	    		<dd>{{ form.title }}</dd>
+	    		<dd>
+	    			{{ form.title }}
+	    			{% if form.errors %}
+	    				<span class="errors">{{ form.title.errors }}</span>
+	    			{% endif %}
+	    		</dd>
 	    		
 	    		<dt>Content</dt>
 	    		<dd>
-	    			<div class="editor"><textarea id="markItUp" rows="10" cols="20" name="content"></textarea></div>	    			
+	    			<div class="editor"><textarea id="markItUp" rows="10" cols="20" name="content"></textarea></div>
+	    			{% if form.content.errors %}
+	    				<span class="errors">{{ form.content.errors }}</span>
+	    			{% endif %}	    			
 	    		</dd>
 	    		
 	    		<dt><label for="id_tags">Tags :</label></dt>
-	    		<dd><input id="id_tags" name="tags" type="text"></dd>
+	    		<dd>
+	    			<input id="id_tags" name="tags" type="text">
+	    		</dd>
 	    	</dl>
 	        <input type="submit" value="Ask">
         </div>

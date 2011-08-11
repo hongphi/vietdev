@@ -34,6 +34,7 @@
 		var STATIC_URL = "{{ STATIC_URL }}";
 	</script>
     {% block extra_static %}{% endblock %}
+    
 </head>
 <body>
 <div id="custom-header"></div>
@@ -47,7 +48,9 @@
                 {% if request.user.is_authenticated %}
                     <a href="/profile/" class="username"><strong>{{ request.user.username }}</strong></a>
                     <span class="lsep">|</span>
-                    <a href="/profile/{{ request.user.username }}/update/">Update My Profile</a>
+                    <a href="/profile/{{ request.user.username }}/update/">Update Profile</a>
+                    <span class="lsep">|</span>
+                     <a href="/profile/{{ request.user.username }}/settings/">Settings</a>
                     <span class="lsep">|</span>
                     <a href="{% url auth_password_change %}">Password</a>
                     <span class="lsep">|</span>
@@ -55,7 +58,7 @@
                 {% else %}
                     <a href="{% url user_signin %}">Login/Register</a>
                 {% endif %}
-                </span>
+                </span> 
             </div>
         </div>
         <div id="hmenus">

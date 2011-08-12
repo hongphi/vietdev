@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block extra_static %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/vietdev.js"></script>
+{% endblock %}
+
+{% block main %}
+<div id="mainbar" class="ask-mainbar">
+    <h1>Editing tag wiki for <a rel="tag" title="show questions tagged '{{ tag.name }}'" class="post-tag" href="/questions/tagged/c%23">{{ tag.name }}</a></h1>
+    <form id="post-form" class="post-form" method="post" action="/qna/tags/edit-tag-wiki/submit/{{ tag.id }}/">{% csrf_token %}
+        <h3>Excerpt</h3>
+        <textarea tabindex="101" rows="3" cols="92" name="excerpt" id="excerpt">{{ tag.excerpt }}</textarea>
+        <h3>Description</h3>
+        <textarea id="markItUp" rows="15" cols="92" name="description">{{ tag.description }}</textarea>
+        <div class="form-submit cbt">
+            <input type="submit" tabindex="110" value="Save Edits" id="submit-button" style="cursor: pointer;">
+            <a href="#" style="margin-left:8px;" tabindex="111" class="cancel-edit">cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

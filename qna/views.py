@@ -156,6 +156,7 @@ def tags_all(request):
                               context_instance = RequestContext(request))
 
 def question_by_tag(request, name):
+    tag = Tag.objects.get(name=name)
     question_list = TaggedItem.objects.get_by_model(Question, name)
 
     paginator = Paginator(question_list, 10) # 10 questions per page
@@ -163,5 +164,23 @@ def question_by_tag(request, name):
     questions = paginator.page(1)
     return render_to_response('qna/list.html',
                               {'questions': questions,
-                               'user': request.user},
+                               'user': request.user,
+                               'tag': tag},
                               context_instance = RequestContext(request))
+
+def edit_tag_wiki(request, id):
+    tag = Tag.objects.get(pk=id)
+    return render_to_response('qna/edit-tag.html',
+                              {'tag': tag,},
+                              context_instance =RequestContext(request))
+@csrf_protect
+@login_required
+def edit_tag_wiki_submit(request, id):
+    if request.method == "POST":
+        tag = Tag.objects.get(pk=id)
+        excerpt = request.POST["excerpt"]
+        tag.excerpt = excerpt
+        description = request.POST["description"]
+        tag.description = description
+        tag.save()
+    return HttpResponseRedirect('/qna/tags/')

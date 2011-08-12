@@ -23,7 +23,10 @@ hr {
 ----------------------------------------------------------------------------------------------------*/
 
 h1 {
-	font-size: 25px;
+	font-family: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
+    font-size: 170%;
+    font-weight: bold;
+    margin-bottom: 7px;
 }
 
 h2 {
@@ -31,7 +34,10 @@ h2 {
 }
 
 h3 {
-	font-size: 21px;
+	font-family: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
+    font-size: 110%;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
 h4 {
@@ -84,5 +90,5 @@ table,
 address,
 fieldset,
 figure {
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 }

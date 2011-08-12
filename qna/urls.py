@@ -12,4 +12,6 @@ urlpatterns = patterns('qna.views',
     url(r'like/(?P<type>\w+)/(?P<id>\d+)/$','like'),
     url(r'tags/$','tags_all'),
     url(r'tags/(?P<name>\w+)/$','question_by_tag'),
+    url(r'tags/edit-tag-wiki/(?P<id>\d+)/$', 'edit_tag_wiki'),
+    url(r'tags/edit-tag-wiki/submit/(?P<id>\d+)/$', 'edit_tag_wiki_submit'),
 )

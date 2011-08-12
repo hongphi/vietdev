@@ -536,3 +536,40 @@ a.post-tag:hover {
 	color: #888888;
 	font-family: Arial, Liberation Sans, DejaVu Sans, sans-serif;
 }
+
+.stats-row, .stats-row a, .stats-row a:visited {
+    color: #444444;
+    font-size: 11px;
+}
+
+.stats-row a:hover {
+    text-decoration: underline;
+}
+
+.tag-excerpt {
+    margin-top: 10px;
+    border: 3px solid #EEEEEE;
+    color: #333333;
+    line-height: 130%;
+    margin-bottom: 8px;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.cbt {
+    clear: both;
+}
+
+/******* Submit form *******/
+.form-submit {
+    display: block;
+    padding: 10px 0 15px;
+}
+.form-submit input {
+    border: 1px solid #888888;
+    font-family: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
+    font-size: 130%;
+    font-weight: bold;
+    margin: 3px;
+    padding: 2px;
+}

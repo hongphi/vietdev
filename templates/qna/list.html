@@ -17,6 +17,30 @@
         </div>
     </div>
     <div id="question-mini-list">
+    {% if tag %}
+        <div class="tag-excerpt">
+        {% if tag.excerpt %}
+            <p>{{ tag.excerpt }}</p>
+        {% else %}
+            <p>The <a rel="tag" title="show questions tagged '{{ tag.name }}'" class="post-tag" href="/questions/tagged/{{ tag.name }}">{{ tag.name }}</a>
+                tag has no wiki summary, would you like to <a title="information about this tag" href="/edit-tag-wiki/{{ tag.id }}">help us create it?</a>
+            </p>
+        {% endif %}
+            <p style="margin-bottom:0;">
+                <a href="/qna/tags/edit-tag-wiki/{{ tag.id }}">improve description</a>
+                <span class="lsep">|</span>
+                <a href="/tags/{{ tag.name }}/info" title="tag wiki">about the {{ tag.name }} tag</a>
+                <span class="lsep">|</span>
+                <a href="/tags/{{ tag.name }}/topusers" title="top answerers and askers in this tag">top users</a>
+                <span class="lsep">|</span>
+                <a href="/tags/{{ tag.name }}/new" title="new answers with this tag">new answers</a>
+                <span class="lsep">|</span>
+                <a href="/tags/{{ tag.name }}/synonyms" title="common, alternate spellings or phrasings for this tag">synonyms</a>
+                <span class="lsep">|</span>
+                <a href="/jobs/tag/{{ tag.name }}" title="find yourself a job">{{ tag.name }} jobs</a>
+            </p>
+        </div>
+    {% endif %}
     {% for q in questions.object_list %}
         <div class="question-summary">
             <div class="votes" id="q_{{ q.id }}">

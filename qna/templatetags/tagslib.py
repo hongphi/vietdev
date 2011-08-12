@@ -1,7 +1,8 @@
 from django import template
 from qna.models import Question, Answer
 from profile.models import Profile
-from django.contrib.admin.models import User
+from tagging.models import Tag, TaggedItem
+import datetime
 
 register = template.Library()
 
@@ -50,3 +51,23 @@ def already_like(obj, user):
             return "like"
     else:
         raise TypeError("Object input must be a instance of Question or Answer!")
+
+@register.filter
+def in_24h(obj):
+    if isinstance(obj, Tag):
+        questions = TaggedItem.objects.get_by_model(Question, obj.name)
+        return questions.filter(date = datetime.date.today()).count()
+    else:
+        raise TypeError("Object input must be a instance of Tag!")
+
+@register.filter
+def in_week(obj):
+    if isinstance(obj, Tag):
+        questions = TaggedItem.objects.get_by_model(Question, obj.name)
+        count = 0
+        for q in questions:
+            if q.date.day > datetime.date.today().day - 7:
+                count += 1
+        return count
+    else:
+        raise TypeError("Object input must be a instance of Tag!")

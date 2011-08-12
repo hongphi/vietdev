@@ -40,6 +40,10 @@
                     <div class="excerpt">
                         This is for description of tag.
                     </div>
+                    <div>
+                        <div class="stats-row fl"><a title="457 questions tagged {{ t.name }} in the last 24 hours" href="#">{{ t|in_24h }} asked today</a>, <a title="{{ t|in_week }} questions tagged {{ t.name }} in the last 7 days" href="#">{{ t|in_week }} this week</a></div>
+                        <div class="cbt"></div>
+                    </div>
                 </td>
             {% endfor %}
             </tr>
